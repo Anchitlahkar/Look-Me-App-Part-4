@@ -33,56 +33,76 @@ import Filter12 from '../components/Filter12';
 
 
 data =
-    [
-        {
-            id: "1",
-            src: require("../assets/filter/crown-pic1.png")
-        },
-        {
-            id: "2",
-            src: require("../assets/filter/crown-pic2.png")
-        },
-        {
-            id: "3",
-            src: require("../assets/filter/crown-pic3.png")
-        },
-        {
-            id: "4",
-            src: require("../assets/filter/flower-pic1.png")
-        }, {
+{
+    "Crowns":
+        [
+            {
+                id: "1",
+                src: require("../assets/filter/crown-pic1.png")
+            },
+            {
+                id: "2",
+                src: require("../assets/filter/crown-pic2.png")
+            },
+            {
+                id: "3",
+                src: require("../assets/filter/crown-pic3.png")
+            },
+        ],
 
-            id: "5",
-            src: require("../assets/filter/flower-pic2.png")
-        },
-        {
-            id: "6",
-            src: require("../assets/filter/flower-pic3.png")
-        },
-        {
-            id: "7",
-            src: require("../assets/filter/hair-pic1.png")
-        },
-        {
-            id: "8",
-            src: require("../assets/filter/hat-pic1.png")
-        },
-        {
-            id: "9",
-            src: require("../assets/filter/hat-pic2.png")
-        },
-        {
-            id: "10",
-            src: require("../assets/filter/other-pic1.png")
-        },
-        {
-            id: "11",
-            src: require("../assets/filter/other-pic2.png")
-        },
-        {
-            id: "12",
-            src: require("../assets/filter/other-pic3.png")
-        }
-    ]
+    "flowers":
+        [
+            {
+                id: "4",
+                src: require("../assets/filter/flower-pic1.png")
+            }, {
+
+                id: "5",
+                src: require("../assets/filter/flower-pic2.png")
+            },
+        ],
+
+    "Hairs":
+        [
+            {
+                id: "6",
+                src: require("../assets/filter/flower-pic3.png")
+            },
+            {
+                id: "7",
+                src: require("../assets/filter/hair-pic1.png")
+            },
+        ],
+
+    "Hats":
+        [
+            {
+                id: "8",
+                src: require("../assets/filter/hat-pic1.png")
+            },
+            {
+                id: "9",
+                src: require("../assets/filter/hat-pic2.png")
+            },
+        ],
+
+    "Ears":
+        [
+            {
+                id: "10",
+                src: require("../assets/filter/other-pic1.png")
+            },
+            {
+                id: "11",
+                src: require("../assets/filter/other-pic2.png")
+            },
+            {
+                id: "12",
+                src: require("../assets/filter/other-pic3.png")
+            }
+        ]
+
+}
 
 
 export default class Main extends React.Component {
