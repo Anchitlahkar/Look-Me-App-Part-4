@@ -112,6 +112,7 @@ export default class Main extends React.Component {
             cameraPermission: null,
             faces: [],
             current_filter: "Filter",
+            selected: "Crowns"
         }
         this.onCameraPermission = this.onCameraPermission.bind(this)
         this.onFacesDetected = this.onFacesDetected.bind(this)
@@ -181,52 +182,52 @@ export default class Main extends React.Component {
                     {
                         this.state.faces.map(face => {
                             if (this.state.current_filter === "filter1") {
-                                return <Filter1 key={1} face={face} />
+                                return <Filter1 key={face.id} face={face} />
                             }
 
                             else if (this.state.current_filter === "filter2") {
-                                return <Filter2 key={2} face={face} />
+                                return <Filter2 key={face.id} face={face} />
                             }
 
                             else if (this.state.current_filter === "filter3") {
-                                return <Filter3 key={3} face={face} />
+                                return <Filter3 key={face.id} face={face} />
                             }
 
                             else if (this.state.current_filter === "filter4") {
-                                return <Filter4 key={4} face={face} />
+                                return <Filter4 key={face.id} face={face} />
 
                             }
 
                             else if (this.state.current_filter === "filter5") {
-                                return <Filter5 key={5} face={face} />
+                                return <Filter5 key={face.id} face={face} />
                             }
 
                             else if (this.state.current_filter === "filter6") {
-                                return <Filter6 key={6} face={face} />
+                                return <Filter6 key={face.id} face={face} />
                             }
 
                             else if (this.state.current_filter === "filter7") {
-                                return <Filter7 key={7} face={face} />
+                                return <Filter7 key={face.id} face={face} />
                             }
 
                             else if (this.state.current_filter === "filter8") {
-                                return <Filter8 key={8} face={face} />
+                                return <Filter8 key={face.id} face={face} />
                             }
 
                             else if (this.state.current_filter === "filter9") {
-                                return <Filter9 key={9} face={face} />
+                                return <Filter9 key={face.id} face={face} />
                             }
 
                             else if (this.state.current_filter === "filter10") {
-                                return <Filter10 key={10} face={face} />
+                                return <Filter10 key={face.id} face={face} />
                             }
 
                             else if (this.state.current_filter === "filter11") {
-                                return <Filter11 key={11} face={face} />
+                                return <Filter11 key={face.id} face={face} />
                             }
 
                             else if (this.state.current_filter === "filter12") {
-                                return <Filter12 key={12} face={face} />
+                                return <Filter12 key={face.id} face={face} />
                             }
                         })
                     }
@@ -234,9 +235,56 @@ export default class Main extends React.Component {
                 </View>
 
                 <View style={styles.framesContainer}>
+                    <View style={styles.categoryContainer}>
+                        <TouchableOpacity
+                            style={
+                                this.state.selected == "Crowns" ? styles.categoryBoxSelected : styles.categoryBox
+                            }
+                            onPress={() => { this.setState({ selected: "Crowns" }) }}
+                        >
+                            <Text>Crowns</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            style={
+                                this.state.selected == "flowers" ? styles.categoryBoxSelected : styles.categoryBox
+                            }
+                            onPress={() => { this.setState({ selected: "flowers" }) }}
+                        >
+                            <Text>flowers</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            style={
+                                this.state.selected == "Hairs" ? styles.categoryBoxSelected : styles.categoryBox
+                            }
+                            onPress={() => { this.setState({ selected: "Hairs" }) }}
+                        >
+                            <Text>Hairs</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            style={
+                                this.state.selected == "Hats" ? styles.categoryBoxSelected : styles.categoryBox
+                            }
+                            onPress={() => { this.setState({ selected: "Hats" }) }}
+                        >
+                            <Text>Hats</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            style={
+                                this.state.selected == "Ears" ? styles.categoryBoxSelected : styles.categoryBox
+                            }
+                            onPress={() => { this.setState({ selected: "Ears" }) }}
+                        >
+                            <Text>Ears</Text>
+                        </TouchableOpacity>
+                    </View>
+
                     <ScrollView style={{ flexDirection: "row", }} horizontal showsHorizontalScrollIndicator={false}>
                         {
-                            data.map(filter_data => {
+                            data[this.state.selected].map(filter_data => {
                                 return (
                                     <TouchableOpacity
                                         style={styles.filterImageContainer}
@@ -261,23 +309,28 @@ const styles = StyleSheet.create({
     container: {
         flex: 1
     },
+
     androidSafeArea: {
         marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
     },
+
     headingContainer: {
         flex: 0.15,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: "#000"
     },
+
     titleText: {
         fontSize: 30
     },
+
     cameraStyle: {
         flex: 0.9,
         padding: 10,
         backgroundColor: "green"
     },
+    
     titleText1: {
         fontSize: RFValue(30),
         fontWeight: "bold",
@@ -294,7 +347,7 @@ const styles = StyleSheet.create({
     },
 
     framesContainer: {
-        flex: 0.2,
+        flex: 0.3,
         paddingLeft: RFValue(20),
         paddingRight: RFValue(20),
         paddingTop: RFValue(30),
@@ -312,35 +365,33 @@ const styles = StyleSheet.create({
     },
 
     categoryContainer: {
-        flex: 0.4,
+        flex: 0.5,
         justifyContent: "center",
         alignItems: 'center',
         flexDirection: 'row',
-        marginBottom: RFValue(10)
+        marginBottom: RFValue(15),
+        height: RFValue(20),
     },
 
     categoryBox: {
-        flex: 0.2,
-        borderRadius: 30,
+        flex: 0.3,
+        borderRadius: 7.5,
         borderWidth: 1,
         backgroundColor: "white",
         width: "100%",
-        padding: RFValue(3),
         margin: 1,
         alignItems: 'center',
-        height: 20
+        height: 25,
     },
 
     categoryBoxSelected: {
-        flex: 0.2,
-        borderRadius: 30,
+        flex: 0.3,
+        borderRadius: 7.5,
         borderWidth: 1,
         backgroundColor: "#efb141",
         width: "100%",
-        padding: RFValue(3),
         margin: 1,
         alignItems: 'center',
-        height: 20
+        height: 25
     }
-
 });
